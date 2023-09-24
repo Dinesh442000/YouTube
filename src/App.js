@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Reactsed
+          Learn Reactsedvf
         </a>
       </header>
     </div>
