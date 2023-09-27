@@ -1,13 +1,15 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 import MainConatiner from "./MainConatiner";
-import VideoContainer from "./VideoContainer";
+
+import WatchPage from "./WatchPage";
 
 const Body = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <MainConatiner />
+      <Outlet />
     </div>
   );
 };
