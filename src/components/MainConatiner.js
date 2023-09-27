@@ -3,7 +3,7 @@ import ButtonsList from "./ButtonsList";
 
 const MainConatiner = () => {
   return (
-    <div>
+    <div className="">
       <ButtonsList />
     </div>
   );
