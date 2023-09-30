@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { showAccountDetails, toggleMenu } from "../Utils/appSlice";
+import {
+  closeAccountDetails,
+  showAccountDetails,
+  toggleMenu,
+} from "../Utils/appSlice";
 import { useEffect, useState } from "react";
 import {
   TOGGLE_IMG,
@@ -16,10 +20,16 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+
   const searchCache = useSelector((store) => store.search);
   // console.log(searchQuery);
   const toogleMenuHandler = () => {
     dispatch(toggleMenu());
+  };
+
+  const handleCloseAccount = () => {
+    console.log("closing");
+    dispatch(closeAccountDetails());
   };
 
   const showUserAccountDetails = () => {
@@ -93,7 +103,8 @@ const Head = () => {
           src={USER_IMG}
           alt=""
           className="h-8 cursor-pointer"
-          onClick={showUserAccountDetails}
+          onClick={() => showUserAccountDetails()}
+          onFocus={() => handleCloseAccount()}
         />
       </div>
     </div>
