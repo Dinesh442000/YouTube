@@ -37,12 +37,18 @@ const Head = () => {
   };
 
   const getSearchSuggestions = async () => {
-    console.log(searchQuery);
+    // console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json[1]);
+    //console.log(json[1]);
     setSuggestions(json[1]);
     dispatch(cacheResult({ [searchQuery]: json[1] }));
+  };
+
+  const loadVideoComponent = (e) => {
+    console.log(e);
+
+    //  console.log(s);
   };
 
   useEffect(() => {
@@ -76,7 +82,7 @@ const Head = () => {
         <div>
           <input
             type="text"
-            className="px-5 w-1/2 border border-gray-500 p-2 rounded-l-full"
+            className="px-5 w-1/2 border  border-gray-500 p-2 rounded-l-full"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => setShowSuggestions(true)}
@@ -89,8 +95,12 @@ const Head = () => {
         {showSuggestions && (
           <div className=" absolute bg-white py-2 px-2 w-[43.15rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
-              {suggestions.map((s) => (
-                <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
+              {suggestions.map((s, index) => (
+                <li
+                  onMouseDown={() => loadVideoComponent(suggestions[index])}
+                  key={index}
+                  className="py-2 px-3 cursor-pointer shadow-sm hover:bg-gray-100"
+                >
                   🔍 {s}
                 </li>
               ))}
